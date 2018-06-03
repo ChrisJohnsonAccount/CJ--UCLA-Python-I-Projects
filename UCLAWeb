@@ -1,39 +1,53 @@
-#Done
-    #Time how long the program takes
-    #Create database
-    #Open a web page, list out links- limited to first 5
-    #Add links to database
-#To Do
-    #Go to next page of database, change to 1
-    #Repeat process
+
+#Code Built
+    #Done
+        #Time how long the program takes
+        #Create database
+        #Open a web page, list out links- limited to first 5
+        #Add links to database
+    #To Do
+        #Go to next page of database, change to 1
+        #Repeat process
 
 
+#Order it should be arranged in- Josh please feel free to comment
+    #1) Create database + time (Done)
+    #2) Add in first html link with visit set to 0 
+    #3) Read line from database, change value from 0 to 1.  Loop:
+        #4) Scrape all urls from html, add to database with visits set to 0 (Done)
+        #5) Repeat until no rows are set to 0
+    
 
-#Timer
+
+#1) Create database + timer 
+    
+#1a) Import libraries
+import urllib.request
+import re
 import time
 start_time = time.time()
-
-#database file
 import sqlite3
 
+#1b) Create database
 conn = sqlite3.connect("file.sqlite")
 cur = conn.cursor()
-    
 cur.execute('''CREATE TABLE IF NOT EXISTS Pages (
             url TEXT UNIQUE,visit INTEGER)''')
-
 conn.close()
 
 
-#urllib + reg expressions
-import urllib.request
-import re
+#2) First URL link- need to add this into the database with visit set to 0
 
-
-#initial URL
+#2a)initial URL
 url = "http://www.ucla.edu/"
 
-#select only html sites
+#2b) Need to add this url into database with visit set to 0
+
+#3 and #5) Need to read line from database where visit = 0, change visit #to 1 then repeat
+
+
+#4)) Scrape all urls from html, add to database with visits set to 0
+#4a) select only html sites
 doc = urllib.request.urlopen(url)
 content_type = doc.info().get_content_type()
 
@@ -43,7 +57,7 @@ if content_type != 'text/html':
 else: # the page is of "text/html" type
     html = doc.read().decode()
 
-#find the ucla.edu links
+#4b) find the ucla.edu links and add into database with visits set to 0
     links = re.findall('href="(http://.*?ucla.edu/)"', html)
     #print only the first few
     for link in links[0:5]: 
@@ -57,6 +71,8 @@ else: # the page is of "text/html" type
 #To Do
     #find next html, change visits to 1
     #repeat over and over
+
+
 
 
 
