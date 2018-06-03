@@ -1,0 +1,80 @@
+#Done
+    #Time how long the program takes
+    #Create database
+    #Open a web page, list out links- limited to first 5
+    #Add links to database
+#To Do
+    #Go to next page of database, change to 1
+    #Repeat process
+
+
+
+#Timer
+import time
+start_time = time.time()
+
+#Web scraper
+
+
+
+
+#database file
+import sqlite3
+
+conn = sqlite3.connect("file.sqlite")
+cur = conn.cursor()
+    
+cur.execute('''CREATE TABLE IF NOT EXISTS Pages (
+            url TEXT UNIQUE,visit INTEGER)''')
+
+conn.close()
+
+
+#urllib
+import urllib.request
+import re
+url = "http://www.ucla.edu/"
+
+#select only html sites
+doc = urllib.request.urlopen(url)
+content_type = doc.info().get_content_type()
+
+if content_type != 'text/html':
+    pass
+
+else: # the page is of "text/html" type
+    html = doc.read().decode()
+
+#find the ucla.edu links
+    links = re.findall('href="(http://.*?ucla.edu/)"', html)
+    #print only the first few
+    for link in links[0:5]: 
+        idx = link.find("#")
+        link = link[:idx]
+        conn = sqlite3.connect("file.sqlite")
+        cur = conn.cursor()
+        cur.execute('INSERT OR IGNORE INTO Pages (url, visit) VALUES (?,?)', (link,0))
+        conn.commit()
+
+#find next html, change visits to 0
+        
+#repeat over and over
+
+
+
+
+
+#Print database
+conn = sqlite3.connect("file.sqlite")
+cur = conn.cursor()
+
+cur.execute('SELECT * from Pages')
+for row in cur:
+    print(row)
+
+cur.close()
+    
+
+
+#Timer output
+print("My program took", time.time() - start_time, "seconds to run")
