@@ -13,11 +13,6 @@
 import time
 start_time = time.time()
 
-#Web scraper
-
-
-
-
 #database file
 import sqlite3
 
@@ -30,9 +25,12 @@ cur.execute('''CREATE TABLE IF NOT EXISTS Pages (
 conn.close()
 
 
-#urllib
+#urllib + reg expressions
 import urllib.request
 import re
+
+
+#initial URL
 url = "http://www.ucla.edu/"
 
 #select only html sites
@@ -56,10 +54,9 @@ else: # the page is of "text/html" type
         cur.execute('INSERT OR IGNORE INTO Pages (url, visit) VALUES (?,?)', (link,0))
         conn.commit()
 
-#find next html, change visits to 0
-        
-#repeat over and over
-
+#To Do
+    #find next html, change visits to 1
+    #repeat over and over
 
 
 
@@ -74,7 +71,6 @@ for row in cur:
 
 cur.close()
     
-
 
 #Timer output
 print("My program took", time.time() - start_time, "seconds to run")
