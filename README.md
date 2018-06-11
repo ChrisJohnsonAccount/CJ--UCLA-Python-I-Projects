@@ -1,2 +1,8 @@
-# Test
-These are files from my "Python for Everybody" course from UMichigan/Coursera (2017).
+Contents
+These are my projects from my Python I course at UCLA Extension (2018).
+
+Projects Included
+UFC Data Science project
+
+UCLA Web Crawler
+
