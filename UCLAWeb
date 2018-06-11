@@ -25,27 +25,31 @@ conn.commit()
 cur.execute('SELECT url FROM Pages WHERE visit = 0 LIMIT 1')
 row = cur.fetchone()
 
-
+x=0
 
 #Loop- Opens url, reads, pulls links, adds link to database
     #Changes url visit to 1, finds next link where visit = 0, starts over 
 while row is not None:
     url = row[0]
-    print(url)
+    x = x + 1
+    print(x, url)
     doc = urllib.request.urlopen(url)
     html = doc.read().decode()
-    links = re.findall('href="(http://.*?ucla.edu.*?)"', html)
+    links = re.findall('href="(http://.*ucla.edu.*)"', html)
     for link in links: 
         content_type = doc.info().get_content_type()
         if content_type != 'text/html':
             pass
         else:
-            idx = link.find(".edu/")
-            link = link[:(idx+5)]
-            conn = sqlite3.connect("file1.sqlite")
-            cur = conn.cursor()
-            cur.execute('INSERT OR IGNORE INTO Pages (url, visit) VALUES (?,?)', (link,0))
-            conn.commit()
+            idx = link.find(".edu")
+            link = link[:(idx+4)]
+            if len(link)<8 or len(link)>30 or link == 'http://map.ais.ucla.edu' or link == 'http://www.cts.ucla.edu':
+                pass
+            else:
+                conn = sqlite3.connect("file1.sqlite")
+                cur = conn.cursor()
+                cur.execute('INSERT OR IGNORE INTO Pages (url, visit) VALUES (?,?)', (link,0))
+                conn.commit()
     #Print database
     conn = sqlite3.connect("file1.sqlite")
     cur = conn.cursor()
@@ -64,4 +68,3 @@ cur.close()
 
 #Timer Output
 print("My program took", time.time() - start_time, "seconds to run")
-
