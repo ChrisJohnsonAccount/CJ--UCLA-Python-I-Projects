@@ -4,13 +4,13 @@ These are my final projects from my computer science courses at UCLA Extension.
 
 	'Utilizing Machine Learning Algorithms to Predict BMI Status'
 	
-	Description: Uses CDC patient data and 4 ML algorithms to predict if a patient is overweight/obese or not
+	Description: Uses CDC patient data and 4 ML algorithms to predict if a patient is overweight/obese
     
 2) Intro to Data Science (Aug 2018)
 
 	'Diabetes in the US- Education and Preventative Measures'
 	
-	Description: Utilizes Google search data and CDC data to find high potential areas for diabetes preventative education efforts
+	Description: Utilizes Google search data and CDC data to find high potential areas for diabetes prevention efforts
     
 3) Python Programming I (June 2018)
 
