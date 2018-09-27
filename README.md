@@ -1,4 +1,4 @@
-These are my final projects from my computer science courses at UCLA Extension.
+Final projects from my UCLA Extension computer science courses- enjoy!
 
 1) Machine Learning Using R (Sept 2018)
 
