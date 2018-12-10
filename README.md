@@ -11,14 +11,18 @@ Final projects from my UCLA Extension computer science courses- enjoy!
 	'Diabetes in the US- Education and Preventative Measures'
 	
 	Description: Utilizes Google search data and CDC data to find high potential areas for diabetes prevention efforts
-    
-3) Python Programming I (June 2018)
+	
+3) Exploratory Data Analysis & Visualization (Oct 2018) 
+
+	'Streamlining Healthcare Data Distribution with Tableau & Cloud Storage'
+	
+	Description:  Aims to solve business problem of quickly distributing complex datasets in a useful format to various departments
+
+4) Python Programming I (June 2018)
 
 	'Data Science in the UFC'
 	
-	Description: Discovered historical trends in UFC fight data
-  
-4) Exploratory Data Anlaysis & Visualization (Pending)
+	Description: Analyzes historical trends in UFC fight data
 	
 5) Intermediate Python: Data Structures & Algorithms (Pending)
 
